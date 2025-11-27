@@ -1,6 +1,9 @@
+import { useState } from "react"
 import FormPredict from "./components/form-predict"
 
 function PredictDiabetesPage(){
+    const [predictResult, setPredictResult] = useState(null)
+    const [isLoading, setLoading] = useState(false)
     return (
         <div className="min-h-screen bg-slate-50 flex item-center justify-center">
             <div className="grid grid-cols-2 gap-5">
@@ -12,11 +15,15 @@ function PredictDiabetesPage(){
                         <h1>Prediksi Diabetes</h1>
                         <p>Isi formulis di bawah ini untuk mendapatkan hasil analisis Diabetesmu</p>
                         <div>
-                            <FormPredict/>
+                            <FormPredict 
+                            isLoading={isLoading} 
+                            setLoading={setLoading}
+                            setPredictResult={setPredictResult}/>
                         </div>
                     </div>
                     <div>
-                        Right
+                        Right : 
+                        HASIL PREDIKSI : Sepertinya {predictResult === 0 ? "Sepertinya negative" : "positif"}
                     </div>
                 </div>
 
